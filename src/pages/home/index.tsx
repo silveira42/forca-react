@@ -5,10 +5,9 @@ import { GameStage, useGameContext } from "../../GameContext";
 
 export default function Home() {
   const { game } = useGameContext();
-  const [ currentWord, setCurrentWord ] = React.useState('');
 
   const chooseWord = (newWord: string) => {
-    setCurrentWord(newWord);
+    game.setWord(newWord);
     game.advanceGame();
   }
 
@@ -22,7 +21,7 @@ export default function Home() {
       )}
       {game.stage === GameStage.Playing && (
         <div>
-          <Game word={currentWord}/>
+          <Game />
         </div>
       )}
     </div>

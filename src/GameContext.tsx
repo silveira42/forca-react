@@ -7,13 +7,17 @@ export enum GameStage {
 }
 
 type Game = {
+	word: string;
 	stage: GameStage;
+	setWord: (word: string) => void;
 	advanceGame: () => void;
 	resetGame: () => void;
 }
 
 const game: Game = {
+	word: '',
 	stage: GameStage.Start,
+	setWord: () => {},
 	advanceGame: () => {},
 	resetGame: () => {},
 };
@@ -30,7 +34,11 @@ export const GameContextProvider = ({
 	const [gameStage, setGameStage] = React.useState<GameStage>(
 		GameStage.Start
 	);
-	
+	const [word, setWord] = React.useState<string>('');
+
+	game.word = word;
+	game.setWord = setWord;
+
 	game.stage = gameStage;
 	game.advanceGame = () => {
 		if (gameStage === GameStage.Start) {
