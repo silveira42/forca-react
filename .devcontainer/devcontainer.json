@@ -1,0 +1,9 @@
+{
+	"name": "Forca React Dev",
+	"dockerComposeFile": [
+		"../docker-compose.dev.yml"
+	],
+	"workspaceFolder": "/app/",
+	"features": {},
+	"service": "forca"
+}

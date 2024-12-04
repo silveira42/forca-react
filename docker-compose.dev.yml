@@ -1,0 +1,15 @@
+---
+name: forca-react-dev
+services:
+  forca:
+    container_name: forca-react-dev-c
+    image: forca-react-dev-i
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./assets:/app/public/assets
+    ports:
+      - "3047:3000"
