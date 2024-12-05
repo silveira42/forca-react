@@ -3,14 +3,14 @@ name: forca-react-prod
 services:
   app:
     container_name: forca-react-prod-c
-    image: forca-react-prod-i:2.0
+    image: forca-react-prod-i:1.1
     build:
       context: .
       dockerfile: Dockerfile.prod
     ports:
-        - "8025:80"
+        - "8029:80"
 
-# docker image tag forca-react-prod-i:2.0 silveira42/forca-react:2.0
-# docker image tag forca-react-prod-i:2.0 silveira42/forca-react:latest
-# docker push silveira42/forca-react:2.0
+# docker image tag forca-react-prod-i:1.1 silveira42/forca-react:1.1
+# docker image tag forca-react-prod-i:1.1 silveira42/forca-react:latest
+# docker push silveira42/forca-react:1.1
 # docker push silveira42/forca-react:latest
