@@ -2,6 +2,7 @@ import React from 'react';
 import { useGameContext } from '../../GameContext';
 import Hangman from '../../components/hangman';
 import LetterInput from '../../components/letterInput';
+import './styles.css';
 
 export default function Game() {
 	const { game } = useGameContext();

@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css';
 
 type WordInputProps = {
 	onChoose: (word: string) => void;
@@ -37,21 +38,38 @@ export default function WordInput(props: WordInputProps) {
 		<div>
 			<input
 				id='word-input'
+				className='input'
 				type={showWord ? 'text' : 'password'}
 				value={word}
 				onChange={e => setWord(e.target.value.toLowerCase())}
 				disabled={isLoading}
 			/>
-			<button onClick={() => props.onChoose(word)} disabled={isLoading}>
+			<button
+				className='button'
+				onClick={() => props.onChoose(word)}
+				disabled={isLoading}
+			>
 				Confirm
 			</button>
-			<button onClick={() => setShowWord(!showWord)} disabled={isLoading}>
+			<button
+				className='button'
+				onClick={() => setShowWord(!showWord)}
+				disabled={isLoading}
+			>
 				Show/Hide Word
 			</button>
-			<button onClick={() => getRandomPortugueseWord()} disabled={isLoading}>
+			<button
+				className='button'
+				onClick={() => getRandomPortugueseWord()}
+				disabled={isLoading}
+			>
 				Get random portuguese word
 			</button>
-			<button onClick={() => getRandomEnglishWord()} disabled={isLoading}>
+			<button
+				className='button'
+				onClick={() => getRandomEnglishWord()}
+				disabled={isLoading}
+			>
 				Get random english word
 			</button>
 		</div>

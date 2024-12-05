@@ -1,4 +1,6 @@
 import React from 'react';
+import { useKeyPressEvent } from 'react-use';
+import './styles.css';
 
 type LetterInputProps = {
 	onChoose: (letter: string) => void;
@@ -7,26 +9,50 @@ type LetterInputProps = {
 export default function LetterInput(props: LetterInputProps) {
 	const [letter, setLetter] = React.useState<string>('');
 
-	const sendLetter = () => {
+	useKeyPressEvent('Enter', () => {
+		if (letter.length === 1) {
+			sendLetter();
+		}
+	});
+
+	const sendLetter = React.useCallback(() => {
 		props.onChoose(letter);
 		setLetter('');
+	}, [letter, props]);
+
+	const clearLetter = React.useCallback(() => {
+		setLetter('');
+	}, []);
+
+	const updateLetter = (newLetter: string) => {
+		if (letter.length === 0 || newLetter.length === 0) {
+			setLetter(newLetter);
+		}
 	};
 
-	const clearLetter = () => {
-		setLetter('');
-	};
+	React.useEffect(() => {
+		const input = document.getElementById('letter') as HTMLInputElement;
+		if (input) {
+			input.focus();
+		}
+	}, [sendLetter, clearLetter]);
 
 	return (
 		<div>
 			<h2>Type the next letter!</h2>
 			<input
-				disabled={letter.length > 0}
+				id='letter'
+				className='letter-input'
 				type='text'
 				value={letter}
-				onChange={e => setLetter(e.target.value.toLowerCase())}
+				onChange={e => updateLetter(e.target.value.toLowerCase())}
 			/>
-			<button onClick={() => clearLetter()}>Clear</button>
-			<button onClick={() => sendLetter()}>Check</button>
+			<button className='button' onClick={() => clearLetter()}>
+				Clear
+			</button>
+			<button className='button' onClick={() => sendLetter()}>
+				Check
+			</button>
 		</div>
 	);
 }
