@@ -3,9 +3,12 @@ import { useGameContext } from '../../GameContext';
 import Hangman from '../../components/hangman';
 import LetterInput from '../../components/letterInput';
 import './styles.css';
+import { useAppContext } from '../../AppContext';
 
 export default function Game() {
 	const { game } = useGameContext();
+	const { intl } = useAppContext();
+	const dictionary = intl.getDictionary();
 
 	const [displayedWord, setDisplayedWord] = React.useState(
 		game.word.split('').map(() => ' _ ')
@@ -55,7 +58,7 @@ export default function Game() {
 				<Hangman wrongGuesses={wrongLetters.length} />
 			</div>
 			<div>
-				<h2>Wrong letters:</h2>
+				<h2>{dictionary.game.wrongLetters}:</h2>
 				<h3>{wrongLetters.join(', ')}</h3>
 			</div>
 		</div>

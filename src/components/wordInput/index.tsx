@@ -1,11 +1,16 @@
 import React from 'react';
 import './styles.css';
+import { useAppContext } from '../../AppContext';
 
 type WordInputProps = {
 	onChoose: (word: string) => void;
 };
 
 export default function WordInput(props: WordInputProps) {
+	const { intl } = useAppContext();
+
+	const dictionary = intl.getDictionary();
+
 	const [word, setWord] = React.useState('');
 	const [showWord, setShowWord] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(false);
@@ -34,6 +39,14 @@ export default function WordInput(props: WordInputProps) {
 			.finally(() => setIsLoading(false));
 	};
 
+	const getRandomWord = () => {
+		if (intl.getLanguage() === 'pt_br') {
+			getRandomPortugueseWord();
+		} else {
+			getRandomEnglishWord();
+		}
+	}
+
 	return (
 		<div>
 			<input
@@ -49,28 +62,21 @@ export default function WordInput(props: WordInputProps) {
 				onClick={() => props.onChoose(word)}
 				disabled={isLoading}
 			>
-				Confirm
+				{dictionary.game.confirm}
 			</button>
 			<button
 				className='button'
 				onClick={() => setShowWord(!showWord)}
 				disabled={isLoading}
 			>
-				Show/Hide Word
+				{dictionary.game.showHideWord}
 			</button>
 			<button
 				className='button'
-				onClick={() => getRandomPortugueseWord()}
+				onClick={() => getRandomWord()}
 				disabled={isLoading}
 			>
-				Get random portuguese word
-			</button>
-			<button
-				className='button'
-				onClick={() => getRandomEnglishWord()}
-				disabled={isLoading}
-			>
-				Get random english word
+				{dictionary.game.generateRandomWord}
 			</button>
 		</div>
 	);

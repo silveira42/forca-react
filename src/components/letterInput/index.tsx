@@ -1,12 +1,16 @@
 import React from 'react';
 import { useKeyPressEvent } from 'react-use';
 import './styles.css';
+import { useAppContext } from '../../AppContext';
 
 type LetterInputProps = {
 	onChoose: (letter: string) => void;
 };
 
 export default function LetterInput(props: LetterInputProps) {
+	const { intl } = useAppContext();
+	const dictionary = intl.getDictionary();
+
 	const [letter, setLetter] = React.useState<string>('');
 
 	useKeyPressEvent('Enter', () => {
@@ -39,7 +43,7 @@ export default function LetterInput(props: LetterInputProps) {
 
 	return (
 		<div>
-			<h2>Type the next letter!</h2>
+			<h2>{dictionary.game.chooseLetter}</h2>
 			<input
 				id='letter'
 				className='letter-input'
@@ -48,10 +52,10 @@ export default function LetterInput(props: LetterInputProps) {
 				onChange={e => updateLetter(e.target.value.toLowerCase())}
 			/>
 			<button className='button' onClick={() => clearLetter()}>
-				Clear
+				{dictionary.game.clear}
 			</button>
 			<button className='button' onClick={() => sendLetter()}>
-				Check
+				{dictionary.game.confirm}
 			</button>
 		</div>
 	);
