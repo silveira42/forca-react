@@ -93,7 +93,7 @@ export default function Game() {
 			{/* Header */}
 			<header className="game-header">
 				<h1 className="game-title" onClick={game.resetGame}>{dictionary.game.title.toUpperCase()}</h1>
-				<LanguageChooser />
+				<LanguageChooser disabled={true} />
 			</header>
 
 			{/* Content */}

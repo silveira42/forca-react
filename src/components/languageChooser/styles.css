@@ -84,8 +84,8 @@
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    color: #404040;
-    background: #FFFFFF;
+    color: #FFFFFF;
+    background: #48795E;
     padding: 10px;
 }
 
@@ -106,4 +106,153 @@
     order: 1;
     flex-grow: 0;
     pointer-events: none;
+}
+
+/* Responsive Design for Language Chooser */
+
+/* Medium Desktop / Laptop (1024px - 1279px) */
+@media screen and (max-width: 1279px) {
+    .language-button {
+        right: 50px;
+    }
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media screen and (max-width: 1023px) {
+    .language-button {
+        right: 30px;
+        top: 25px;
+        width: 110px;
+        height: 36px;
+    }
+
+    .language-flag {
+        font-size: 28px;
+    }
+
+    .language-code {
+        font-size: 18px;
+    }
+
+    .language-arrow {
+        font-size: 11px;
+    }
+}
+
+/* Tablet Portrait (600px - 767px) */
+@media screen and (max-width: 767px) {
+    .language-button {
+        right: 20px;
+        top: 20px;
+        width: 100px;
+        height: 34px;
+    }
+
+    .language-flag {
+        font-size: 24px;
+        width: 28px;
+    }
+
+    .language-code {
+        font-size: 16px;
+        width: 22px;
+    }
+
+    .language-arrow {
+        font-size: 10px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .language-select option {
+        font-size: 14px;
+    }
+}
+
+/* Mobile Landscape (480px - 599px) */
+@media screen and (max-width: 599px) {
+    .language-button {
+        right: 15px;
+        top: 18px;
+        width: 90px;
+        height: 32px;
+        padding: 4px 8px;
+        gap: 8px;
+    }
+
+    .language-flag {
+        font-size: 22px;
+        width: 26px;
+    }
+
+    .language-code {
+        font-size: 15px;
+        width: 20px;
+    }
+
+    .language-arrow {
+        font-size: 9px;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Mobile Portrait (320px - 479px) */
+@media screen and (max-width: 479px) {
+    .language-button {
+        right: 10px;
+        top: 15px;
+        width: 85px;
+        height: 30px;
+        padding: 3px 7px;
+        gap: 6px;
+    }
+
+    .language-flag {
+        font-size: 20px;
+        width: 24px;
+    }
+
+    .language-code {
+        font-size: 14px;
+        width: 18px;
+    }
+
+    .language-arrow {
+        font-size: 8px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .language-select option {
+        font-size: 13px;
+    }
+}
+
+/* Extra Small Mobile (< 360px) */
+@media screen and (max-width: 359px) {
+    .language-button {
+        right: 8px;
+        top: 12px;
+        width: 80px;
+        height: 28px;
+        padding: 3px 6px;
+        gap: 5px;
+    }
+
+    .language-flag {
+        font-size: 18px;
+        width: 22px;
+    }
+
+    .language-code {
+        font-size: 13px;
+        width: 16px;
+    }
+
+    .language-arrow {
+        font-size: 7px;
+        width: 14px;
+        height: 14px;
+    }
 }
