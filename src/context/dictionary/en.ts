@@ -13,9 +13,12 @@ const enDictionary: Dictionary = {
     game: {
         self: 'Game',
         title: 'Hangman',
+        singleplayer: 'Single player',
+        multiplayer: 'Multi player',
         youWin: 'You win!',
         youLose: 'You lose!',
-        chooseWord: 'Choose a word',
+        theWordWas: 'The word was',
+        chooseWord: 'Write the word',
         generateRandomWord: 'Generate random word',
         chooseLetter: 'Choose a letter',
         confirm: 'Confirm',
@@ -23,9 +26,13 @@ const enDictionary: Dictionary = {
         showHideWord: 'Show/Hide word',
         wrongLetters: 'Wrong letters',
         difficulty: 'Difficulty',
+        chooseDifficulty: 'Select difficulty',
+        start: 'Start',
         easy: 'Easy',
         medium: 'Medium',
         hard: 'Hard',
+        placeholder: 'Word',
+        type: "Type",
     },
 };
 

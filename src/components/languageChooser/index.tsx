@@ -9,16 +9,40 @@ export default function LanguageChooser() {
     intl.changeLanguage(event.target.value as keyof Languages);
   }
 
+  const getLanguageFlag = (lang: string) => {
+    const flags: { [key: string]: string } = {
+      'pt_br': '🇧🇷',
+      'en': '🇺🇸'
+    };
+    return flags[lang] || '🌐';
+  };
+
+  const getLanguageCode = (lang: string) => {
+    const codes: { [key: string]: string } = {
+      'pt_br': 'PT',
+      'en': 'EN'
+    };
+    return codes[lang] || lang.toUpperCase();
+  };
+
   return (
-    <div>
-      <label>{intl.getDictionary().language}: </label>
-      <select onChange={selectLanguage} defaultValue={intl.getLanguage()}>
+    <div className="language-button">
+      <div className="language-display">
+        <span className="language-flag">{getLanguageFlag(intl.getLanguage())}</span>
+        <span className="language-code">{getLanguageCode(intl.getLanguage())}</span>
+      </div>
+      <select 
+        onChange={selectLanguage} 
+        value={intl.getLanguage()}
+        className="language-select"
+      >
         {
           Object.entries(intl.listLanguages()).map(([key, value]) => (
-            <option key={key} value={key}>{value}</option>
+            <option key={key} value={key}>{getLanguageFlag(key)} {getLanguageCode(key)}</option>
           ))
         }
       </select>
+      <span className="language-arrow">▼</span>
     </div>
   );
 }

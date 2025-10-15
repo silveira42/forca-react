@@ -11,8 +11,11 @@ type Dictionary = {
     game: {
         self: string;
         title: string;
+        singleplayer: string;
+        multiplayer: string;
         youWin: string;
         youLose: string;
+        theWordWas: string;
         chooseWord: string;
         generateRandomWord: string;
         chooseLetter: string;
@@ -21,9 +24,13 @@ type Dictionary = {
         showHideWord: string;
         wrongLetters: string;
         difficulty: string;
+        chooseDifficulty: string;
+        start: string;
         easy: string;
         medium: string;
         hard: string;
+        placeholder: string;
+        type: string;
     }
 };
 

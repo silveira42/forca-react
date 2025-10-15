@@ -1,1 +1,81 @@
-@import '../../App.css';
+/* Hangman Container */
+.hangman-container {
+    position: relative;
+    width: 101px;
+    height: 140px;
+}
+
+/* Gallows Structure */
+.hangman-gallows {
+    position: absolute;
+    width: 101px;
+    height: 140px;
+    left: 0px;
+    top: 0px;
+    margin: 0;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+}
+
+/* Hangman Parts */
+.hangman-part {
+    position: absolute;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+    margin: 0;
+}
+
+/* Head - positioned at (11.5px, 39px) from Figma */
+.hangman-head {
+    width: 15px;
+    height: 20px;
+    left: 40.5px;
+    top: 39px;
+}
+
+/* Body - positioned below head */
+.hangman-body {
+    width: 12px;
+    height: 20px;
+    left: 44px;
+    top: 60px;
+}
+
+/* Arms - positioned at (3.5px, 60px) from Figma */
+.hangman-arms {
+    width: 31px;
+    height: 20px;
+    left: 32.5px;
+    top: 60px;
+}
+
+/* Legs - positioned at (3.5px, 81px) from Figma */
+.hangman-legs {
+    width: 31px;
+    height: 20px;
+    left: 32.5px;
+    top: 81px;
+    display: flex;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.leg-left {
+    display: inline-block;
+}
+
+.leg-right {
+    display: inline-block;
+}
