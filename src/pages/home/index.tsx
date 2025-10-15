@@ -5,6 +5,7 @@ import { GameStage, useGameContext } from '../../GameContext';
 import './styles.css';
 import { useAppContext } from '../../AppContext';
 import LanguageChooser from '../../components/languageChooser';
+import { normalizeWord } from '../../util/normalizeWord';
 
 export default function Home() {
 	const { game } = useGameContext();
@@ -13,7 +14,8 @@ export default function Home() {
 	const dictionary = intl.getDictionary();
 
 	const chooseWord = (newWord: string) => {
-		game.setWord(newWord);
+		// call the normalization function
+		game.setWord(normalizeWord(newWord.trim()));
 		game.advanceGame();
 	};
 
@@ -70,11 +72,11 @@ export default function Home() {
 						const [word, score] = line.split(',');
 						return { word: word?.trim(), score: parseFloat(score) };
 					})
-					.filter(item => 
-						item.word && 
+					.filter(item =>
+						item.word &&
 						!isNaN(item.score) &&
-						item.word.length >= 4 && 
-						item.word.length <= 12 && 
+						item.word.length >= 4 &&
+						item.word.length <= 12 &&
 						/^[a-záàâãéêíóôõúç]+$/i.test(item.word)
 					);
 
@@ -87,7 +89,7 @@ export default function Home() {
 						break;
 					case 'medium':
 						// Moderately common words
-						filteredWords = wordData.filter(item => 
+						filteredWords = wordData.filter(item =>
 							item.score >= 8.0 && item.score < 10.0
 						);
 						break;
@@ -98,10 +100,10 @@ export default function Home() {
 					default:
 						filteredWords = wordData;
 				}
-				
+
 				// Fallback to all valid words if difficulty selection is empty
 				const wordsToUse = filteredWords.length > 0 ? filteredWords : wordData;
-				
+
 				if (wordsToUse.length > 0) {
 					const randomItem = wordsToUse[Math.floor(Math.random() * wordsToUse.length)];
 					setSinglePlayerWord(randomItem.word);
@@ -125,7 +127,7 @@ export default function Home() {
 		// Using words of 5-8 letters for good balance
 		const lengths = [5, 6, 7, 8];
 		const randomLength = lengths[Math.floor(Math.random() * lengths.length)];
-		
+
 		fetch(
 			`https://raw.githubusercontent.com/Fj00/CEL/main/2-15/${randomLength}.txt`
 		)
@@ -135,9 +137,9 @@ export default function Home() {
 				const words = data.split('\n')
 					.filter(line => line.trim())
 					.map(line => line.trim().toLowerCase())
-					.filter(word => 
-						word.length >= 4 && 
-						word.length <= 12 && 
+					.filter(word =>
+						word.length >= 4 &&
+						word.length <= 12 &&
 						/^[a-z]+$/i.test(word) && // Only English letters
 						!word.includes("'") // Exclude contractions
 					);
@@ -163,10 +165,10 @@ export default function Home() {
 					default:
 						filteredWords = words;
 				}
-				
+
 				// Fallback to all words if difficulty selection is empty
 				const wordsToUse = filteredWords.length > 0 ? filteredWords : words;
-				
+
 				if (wordsToUse.length > 0) {
 					const randomWord = wordsToUse[Math.floor(Math.random() * wordsToUse.length)];
 					setSinglePlayerWord(randomWord);
@@ -238,7 +240,7 @@ export default function Home() {
 									<div className="difficulty-section">
 										<label className="difficulty-label">{dictionary.game.chooseDifficulty}:</label>
 										<div className="dropdown">
-											<select 
+											<select
 												value={difficulty}
 												onChange={(e) => handleChangeDifficulty(e.target.value as 'easy' | 'medium' | 'hard')}
 												className="dropdown-select"
@@ -249,8 +251,8 @@ export default function Home() {
 											</select>
 										</div>
 									</div>
-									<button 
-										className="start-button" 
+									<button
+										className="start-button"
 										onClick={startSinglePlayer}
 										disabled={isLoading}
 										style={{ opacity: isLoading ? 0.5 : 1, cursor: isLoading ? 'not-allowed' : 'pointer' }}
@@ -277,7 +279,7 @@ export default function Home() {
 												onChange={(e) => setMultiplayerWord(e.target.value.toLowerCase())}
 												className="password-input"
 											/>
-											<button 
+											<button
 												className="eye-reveal-button"
 												onMouseDown={handleMouseDown}
 												onMouseUp={handleMouseUp}
@@ -288,14 +290,14 @@ export default function Home() {
 												title="Pressione para revelar"
 												aria-label="Hold to reveal password"
 											>
-												<svg 
-													width="20" 
-													height="20" 
-													viewBox="0 0 24 24" 
-													fill="none" 
-													stroke="currentColor" 
-													strokeWidth="2" 
-													strokeLinecap="round" 
+												<svg
+													width="20"
+													height="20"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													strokeWidth="2"
+													strokeLinecap="round"
 													strokeLinejoin="round"
 												>
 													{showWord ? (
@@ -315,8 +317,8 @@ export default function Home() {
 											</button>
 										</div>
 									</div>
-									<button 
-										className="start-button" 
+									<button
+										className="start-button"
 										onClick={startMultiplayer}
 										disabled={multiplayerWord.trim() ? false : true}
 										style={{ opacity: !multiplayerWord.trim() ? 0.5 : 1, cursor: !multiplayerWord.trim() ? 'not-allowed' : 'pointer' }}
