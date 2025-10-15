@@ -3,7 +3,7 @@ import { Languages } from "../../context/model/Intl";
 import './styles.css';
 
 type LanguageChooserProps = {
-    disabled: boolean
+    disabled?: boolean
 }
 
 export default function LanguageChooser({disabled}: LanguageChooserProps) {
