@@ -1,1 +1,900 @@
-@import '../../App.css';
+/* Home Container */
+.home-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: #508668;
+}
+
+/* Header */
+.home-header {
+    position: absolute;
+    width: 100%;
+    height: 140px;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-title {
+    position: absolute;
+    width: 324px;
+    height: 63px;
+    left: calc(50% - 324px/2);
+    top: 38.5px;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 63px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+/* Content */
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 50px;
+
+    position: absolute;
+    width: 1208px;
+    left: calc(50% - 1208px/2);
+    top: 140px;
+}
+
+/* Hangman ASCII Art */
+.hangman-ascii {
+    width: 101px;
+    height: 140px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.hangman-ascii pre {
+    margin: 0;
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+/* Game Mode Section */
+.game-mode-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 30px;
+
+    width: 1208px;
+    height: 254px;
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+/* Game Mode Cards */
+.game-mode-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0px;
+    gap: 20px;
+
+    width: 540px;
+    height: 234px;
+
+    background: #48795E;
+    border-radius: 20px;
+
+    flex: none;
+    flex-grow: 0;
+}
+
+.game-mode-card:first-of-type {
+    order: 0;
+}
+
+.game-mode-card:last-of-type {
+    order: 2;
+}
+
+.card-title {
+    width: 540px;
+    height: 20px;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 20px;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Difficulty Section */
+.difficulty-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+    gap: 20px;
+
+    width: 540px;
+    height: 64px;
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.difficulty-label {
+    height: 20px;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: right;
+
+    color: #FFFFFF;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Dropdown */
+.dropdown {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 10px 0px 15px;
+    gap: 10px;
+
+    width: 113px;
+    height: 44px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.dropdown-select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 44px;
+
+    color: #404040;
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+
+    cursor: pointer;
+    outline: none;
+}
+
+/* Word Section */
+.word-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+    gap: 20px;
+
+    width: 540px;
+    height: 64px;
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.word-label {
+    height: 20px;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: right;
+
+    color: #FFFFFF;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Word Input Container */
+.word-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;
+
+    width: 270px;
+    height: 44px;
+
+    background: #FFFFFF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.word-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+
+    color: #404040;
+    outline: none;
+}
+
+.word-input::placeholder {
+    color: #D9D9D9;
+}
+
+/* Password Input Wrapper - Custom input with eye inside */
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 270px;
+    height: 44px;
+
+    background: #FFFFFF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.password-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 50px 10px 15px;
+    /* Extra padding on right for the eye button */
+
+    width: 100%;
+    height: 100%;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+
+    color: #404040;
+    outline: none;
+    border-radius: 10px;
+}
+
+.password-input::placeholder {
+    color: #D9D9D9;
+}
+
+.eye-reveal-button {
+    position: absolute;
+    right: 12px;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #707070;
+
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.eye-reveal-button:hover {
+    color: #404040;
+}
+
+.eye-reveal-button:active {
+    color: #404040;
+    transform: scale(0.95);
+}
+
+.eye-reveal-button svg {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Start Button */
+.start-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
+
+    width: 102px;
+    height: 50px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 20px;
+
+    color: #404040;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.start-button:hover {
+    opacity: 0.9;
+}
+
+/* OR Separator */
+.or-separator {
+    width: 48px;
+    height: 20px;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+/* Responsive Design */
+
+/* Large Desktop (1280px - 1920px+) - Default styles already optimized for this */
+
+/* Medium Desktop / Laptop (1024px - 1279px) */
+@media screen and (max-width: 1279px) {
+    .home-content {
+        width: 95%;
+        max-width: 1208px;
+        left: 2.5%;
+    }
+
+    .game-mode-section {
+        width: 100%;
+        gap: 25px;
+    }
+
+    .game-mode-card {
+        width: 48%;
+        min-width: 450px;
+    }
+
+    .card-title {
+        width: 100%;
+    }
+
+    .difficulty-section,
+    .word-section {
+        width: 100%;
+    }
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media screen and (max-width: 1023px) {
+    .home-header {
+        height: 120px;
+    }
+
+    .home-title {
+        font-size: 36px;
+        width: auto;
+        max-width: 90%;
+        left: 5%;
+        top: 30px;
+        line-height: 60px;
+    }
+
+    .home-content {
+        top: 130px;
+        gap: 40px;
+        width: 90%;
+        left: 5%;
+    }
+
+    .hangman-ascii {
+        width: 90px;
+        height: 125px;
+    }
+
+    .hangman-ascii pre {
+        font-size: 22px;
+        line-height: 18px;
+    }
+
+    .game-mode-section {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        padding: 0;
+        width: 100%;
+    }
+
+    .game-mode-card {
+        width: 100%;
+        max-width: 600px;
+        min-width: unset;
+        height: auto;
+        padding: 25px 20px;
+    }
+
+    .card-title {
+        font-size: 22px;
+        height: auto;
+    }
+
+    .difficulty-section,
+    .word-section {
+        flex-direction: column;
+        gap: 15px;
+        height: auto;
+        padding: 5px 0;
+    }
+
+    .difficulty-label,
+    .word-label {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .dropdown {
+        width: 130px;
+        height: 42px;
+    }
+
+    .dropdown-select {
+        font-size: 18px;
+        line-height: 42px;
+    }
+
+    .password-input-wrapper {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .password-input {
+        font-size: 18px;
+    }
+
+    .start-button {
+        font-size: 22px;
+        width: 110px;
+        height: 48px;
+    }
+
+    .or-separator {
+        font-size: 28px;
+        width: 100%;
+        text-align: center;
+        order: 1;
+    }
+}
+
+/* Tablet Portrait (600px - 767px) */
+@media screen and (max-width: 767px) {
+    .home-header {
+        height: 100px;
+    }
+
+    .home-title {
+        font-size: 28px;
+        width: 80%;
+        left: 10%;
+        top: 25px;
+        line-height: 50px;
+    }
+
+    .home-content {
+        top: 110px;
+        gap: 30px;
+        width: 92%;
+        left: 4%;
+    }
+
+    .hangman-ascii {
+        width: 75px;
+        height: 105px;
+    }
+
+    .hangman-ascii pre {
+        font-size: 18px;
+        line-height: 15px;
+    }
+
+    .game-mode-section {
+        gap: 15px;
+    }
+
+    .game-mode-card {
+        max-width: 500px;
+        padding: 20px 15px;
+        gap: 15px;
+    }
+
+    .card-title {
+        font-size: 20px;
+    }
+
+    .card-content {
+        gap: 15px;
+    }
+
+    .difficulty-label,
+    .word-label {
+        font-size: 16px;
+    }
+
+    .dropdown {
+        width: 120px;
+        height: 40px;
+    }
+
+    .dropdown-select {
+        font-size: 16px;
+        line-height: 40px;
+    }
+
+    .password-input-wrapper {
+        max-width: 280px;
+        height: 40px;
+    }
+
+    .password-input {
+        font-size: 16px;
+    }
+
+    .start-button {
+        font-size: 20px;
+        width: 100px;
+        height: 44px;
+    }
+
+    .or-separator {
+        font-size: 24px;
+    }
+}
+
+/* Mobile Landscape (480px - 599px) */
+@media screen and (max-width: 599px) {
+    .home-header {
+        height: 90px;
+    }
+
+    .home-title {
+        font-size: 24px;
+        width: 85%;
+        left: 7.5%;
+        top: 20px;
+        line-height: 45px;
+        height: auto;
+    }
+
+    .home-content {
+        top: 100px;
+        gap: 25px;
+        width: 94%;
+        left: 3%;
+    }
+
+    .hangman-ascii {
+        width: 65px;
+        height: 90px;
+    }
+
+    .hangman-ascii pre {
+        font-size: 16px;
+        line-height: 13px;
+    }
+
+    .game-mode-section {
+        gap: 12px;
+    }
+
+    .game-mode-card {
+        max-width: 100%;
+        padding: 18px 12px;
+        gap: 12px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .card-content {
+        gap: 12px;
+    }
+
+    .difficulty-section,
+    .word-section {
+        gap: 12px;
+        padding: 3px 0;
+    }
+
+    .difficulty-label,
+    .word-label {
+        font-size: 15px;
+    }
+
+    .dropdown {
+        width: 110px;
+        height: 38px;
+        padding: 0px 8px 0px 12px;
+    }
+
+    .dropdown-select {
+        font-size: 15px;
+        line-height: 38px;
+    }
+
+    .password-input-wrapper {
+        max-width: 250px;
+        height: 38px;
+    }
+
+    .password-input {
+        font-size: 15px;
+        padding: 8px 45px 8px 12px;
+    }
+
+    .eye-reveal-button {
+        right: 10px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .start-button {
+        font-size: 18px;
+        width: 90px;
+        height: 42px;
+        padding: 12px;
+    }
+
+    .or-separator {
+        font-size: 22px;
+    }
+}
+
+/* Mobile Portrait (320px - 479px) */
+@media screen and (max-width: 479px) {
+    .home-header {
+        height: 80px;
+    }
+
+    .home-title {
+        font-size: 20px;
+        width: 90%;
+        left: 5%;
+        top: 18px;
+        line-height: 40px;
+    }
+
+    .home-content {
+        top: 90px;
+        gap: 20px;
+        width: 96%;
+        left: 2%;
+    }
+
+    .hangman-ascii {
+        width: 55px;
+        height: 75px;
+    }
+
+    .hangman-ascii pre {
+        font-size: 14px;
+        line-height: 11px;
+    }
+
+    .game-mode-section {
+        gap: 10px;
+        padding: 5px;
+    }
+
+    .game-mode-card {
+        padding: 15px 10px;
+        gap: 10px;
+        border-radius: 15px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-content {
+        gap: 10px;
+    }
+
+    .difficulty-section,
+    .word-section {
+        gap: 10px;
+        padding: 2px 0;
+    }
+
+    .difficulty-label,
+    .word-label {
+        font-size: 14px;
+    }
+
+    .dropdown {
+        width: 100px;
+        height: 36px;
+        padding: 0px 6px 0px 10px;
+    }
+
+    .dropdown-select {
+        font-size: 14px;
+        line-height: 36px;
+    }
+
+    .password-input-wrapper {
+        max-width: 220px;
+        height: 36px;
+    }
+
+    .password-input {
+        font-size: 14px;
+        padding: 6px 40px 6px 10px;
+    }
+
+    .eye-reveal-button {
+        right: 8px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .start-button {
+        font-size: 16px;
+        width: 85px;
+        height: 38px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .or-separator {
+        font-size: 20px;
+    }
+}
+
+/* Extra Small Mobile (< 320px) */
+@media screen and (max-width: 359px) {
+    .home-title {
+        font-size: 18px;
+        line-height: 35px;
+    }
+
+    .hangman-ascii {
+        width: 50px;
+        height: 65px;
+    }
+
+    .hangman-ascii pre {
+        font-size: 12px;
+        line-height: 10px;
+    }
+
+    .card-title {
+        font-size: 15px;
+    }
+
+    .difficulty-label,
+    .word-label {
+        font-size: 13px;
+    }
+
+    .dropdown {
+        width: 90px;
+        height: 34px;
+    }
+
+    .dropdown-select {
+        font-size: 13px;
+        line-height: 34px;
+    }
+
+    .password-input-wrapper {
+        max-width: 200px;
+        height: 34px;
+    }
+
+    .password-input {
+        font-size: 13px;
+    }
+
+    .start-button {
+        font-size: 15px;
+        width: 80px;
+        height: 36px;
+    }
+
+    .or-separator {
+        font-size: 18px;
+    }
+}

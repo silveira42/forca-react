@@ -1,1 +1,588 @@
-@import '../../App.css';
+/* Game Container */
+.game-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: #508668;
+}
+
+/* Header */
+.game-header {
+    position: absolute;
+    width: 100%;
+    height: 140px;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-title {
+    position: absolute;
+    width: 324px;
+    height: 63px;
+    left: calc(50% - 324px/2);
+    top: 38.5px;
+    cursor: pointer;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 63px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+/* Content */
+.game-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 100px;
+
+    position: absolute;
+    width: 545px;
+    left: calc(50% - 545px/2);
+    top: 140px;
+}
+
+/* Hangman Display */
+.hangman-display {
+    position: relative;
+    width: 101px;
+    height: 140px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+/* Word Display */
+.word-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 5px;
+
+    width: 100%;
+    max-width: 545px;
+    min-height: 56px;
+    flex-wrap: wrap;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+/* Letter Box */
+.letter-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    width: 54px;
+    height: 56px;
+
+    border-radius: 10px;
+
+    flex: none;
+    flex-grow: 0;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+}
+
+.letter-box.filled {
+    background: #48795E;
+}
+
+.letter-box.empty {
+    box-sizing: border-box;
+    border: 4px solid #48795E;
+    background: transparent;
+}
+
+/* Keyboard */
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 5px;
+
+    width: 545px;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+/* Keyboard Row */
+.keyboard-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 5px;
+
+    height: 50px;
+
+    flex: none;
+    flex-grow: 0;
+}
+
+/* Keyboard Key */
+.keyboard-key {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    width: 48px;
+    height: 50px;
+
+    background: #456E58;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    font-family: 'Mitr';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+
+    flex: none;
+    flex-grow: 0;
+
+    transition: all 0.2s ease;
+}
+
+.keyboard-key:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.keyboard-key:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.keyboard-key.used {
+    background: rgba(69, 110, 88, 0.5);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+}
+
+.keyboard-key:disabled {
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+
+/* Large Desktop (1280px - 1920px+) - Default styles already optimized for this */
+
+/* Medium Desktop / Laptop (1024px - 1279px) */
+@media screen and (max-width: 1279px) {
+    .game-content {
+        width: 90%;
+        max-width: 545px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media screen and (max-width: 1023px) {
+    .game-header {
+        height: 120px;
+    }
+
+    .game-title {
+        font-size: 36px;
+        width: auto;
+        max-width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 30px;
+        line-height: 60px;
+    }
+
+    .game-content {
+        top: 140px;
+        gap: 60px;
+        width: 90%;
+        max-width: 520px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .hangman-display {
+        width: 90px;
+        height: 125px;
+    }
+
+    .word-display {
+        max-width: 100%;
+        gap: 4px;
+    }
+
+    .letter-box {
+        width: 50px;
+        height: 52px;
+        font-size: 34px;
+    }
+
+    .keyboard {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .keyboard-row {
+        height: 48px;
+        gap: 4px;
+    }
+
+    .keyboard-key {
+        width: 46px;
+        height: 48px;
+        font-size: 22px;
+    }
+}
+
+/* Tablet Portrait (600px - 767px) */
+@media screen and (max-width: 767px) {
+    .game-header {
+        height: 110px;
+    }
+
+    .game-title {
+        font-size: 28px;
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 28px;
+        line-height: 50px;
+    }
+
+    .game-content {
+        top: 130px;
+        gap: 50px;
+        width: 92%;
+        max-width: 480px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 10px;
+    }
+
+    .hangman-display {
+        width: 75px;
+        height: 105px;
+    }
+
+    .word-display {
+        max-width: 100%;
+        gap: 3px;
+        min-height: 50px;
+    }
+
+    .letter-box {
+        width: 46px;
+        height: 48px;
+        font-size: 30px;
+        padding: 8px;
+    }
+
+    .keyboard {
+        max-width: 100%;
+        padding: 8px;
+    }
+
+    .keyboard-row {
+        height: 44px;
+        gap: 3px;
+    }
+
+    .keyboard-key {
+        width: 42px;
+        height: 44px;
+        font-size: 20px;
+        padding: 8px;
+    }
+}
+
+/* Mobile Landscape (480px - 599px) */
+@media screen and (max-width: 599px) {
+    .game-header {
+        height: 100px;
+    }
+
+    .game-title {
+        font-size: 24px;
+        width: 85%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 24px;
+        line-height: 45px;
+    }
+
+    .game-content {
+        top: 120px;
+        gap: 45px;
+        width: 94%;
+        max-width: 420px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 8px;
+    }
+
+    .hangman-display {
+        width: 65px;
+        height: 90px;
+    }
+
+    .word-display {
+        max-width: 100%;
+        gap: 3px;
+        min-height: 46px;
+    }
+
+    .letter-box {
+        width: 42px;
+        height: 44px;
+        font-size: 28px;
+        padding: 7px;
+        border-width: 3px;
+    }
+
+    .letter-box.empty {
+        border: 3px solid #48795E;
+    }
+
+    .keyboard {
+        max-width: 100%;
+        padding: 6px;
+        gap: 4px;
+    }
+
+    .keyboard-row {
+        height: 40px;
+        gap: 3px;
+    }
+
+    .keyboard-key {
+        width: 38px;
+        height: 40px;
+        font-size: 18px;
+        padding: 6px;
+        border-radius: 8px;
+    }
+}
+
+/* Mobile Portrait (320px - 479px) */
+@media screen and (max-width: 479px) {
+    .game-header {
+        height: 90px;
+    }
+
+    .game-title {
+        font-size: 20px;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 22px;
+        line-height: 40px;
+    }
+
+    .game-content {
+        top: 110px;
+        gap: 100px;
+        width: 96%;
+        max-width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 5px;
+    }
+
+    .hangman-display {
+        width: 55px;
+        height: 75px;
+    }
+
+    .word-display {
+        gap: 2px;
+        min-height: 42px;
+        padding: 0 5px;
+    }
+
+    .letter-box {
+        width: 38px;
+        height: 40px;
+        font-size: 24px;
+        padding: 6px;
+        border-radius: 8px;
+        border-width: 3px;
+    }
+
+    .letter-box.empty {
+        border: 3px solid #48795E;
+    }
+
+    .keyboard {
+        max-width: 100%;
+        padding: 5px;
+        gap: 3px;
+    }
+
+    .keyboard-row {
+        height: 38px;
+        gap: 2px;
+    }
+
+    .keyboard-key {
+        width: 34px;
+        height: 38px;
+        font-size: 16px;
+        padding: 5px;
+        border-radius: 7px;
+    }
+
+    .keyboard-row:nth-child(2) {
+        gap: 2px;
+    }
+
+    .keyboard-row:nth-child(3) {
+        gap: 2px;
+    }
+}
+
+/* Extra Small Mobile (< 360px) */
+@media screen and (max-width: 359px) {
+    .game-header {
+        height: 85px;
+    }
+
+    .game-title {
+        font-size: 18px;
+        line-height: 35px;
+        top: 20px;
+    }
+
+    .game-content {
+        top: 100px;
+        gap: 35px;
+        padding: 0 3px;
+    }
+
+    .hangman-display {
+        width: 50px;
+        height: 65px;
+    }
+
+    .word-display {
+        gap: 2px;
+        min-height: 38px;
+    }
+
+    .letter-box {
+        width: 34px;
+        height: 36px;
+        font-size: 22px;
+        padding: 5px;
+        border-radius: 6px;
+        border-width: 2px;
+    }
+
+    .letter-box.empty {
+        border: 2px solid #48795E;
+    }
+
+    .keyboard {
+        padding: 4px;
+        gap: 2px;
+    }
+
+    .keyboard-row {
+        height: 34px;
+        gap: 2px;
+    }
+
+    .keyboard-key {
+        width: 30px;
+        height: 34px;
+        font-size: 14px;
+        padding: 4px;
+        border-radius: 6px;
+    }
+}
+
+/* Ultra Small Mobile (< 320px) */
+@media screen and (max-width: 319px) {
+    .game-header {
+        height: 80px;
+    }
+
+    .game-title {
+        font-size: 16px;
+        line-height: 32px;
+        top: 18px;
+    }
+
+    .game-content {
+        top: 95px;
+        gap: 30px;
+    }
+
+    .hangman-display {
+        width: 45px;
+        height: 60px;
+    }
+
+    .word-display {
+        gap: 1px;
+        min-height: 36px;
+    }
+
+    .letter-box {
+        width: 30px;
+        height: 32px;
+        font-size: 20px;
+        padding: 4px;
+    }
+
+    .keyboard {
+        padding: 3px;
+    }
+
+    .keyboard-row {
+        height: 32px;
+        gap: 1px;
+    }
+
+    .keyboard-key {
+        width: 28px;
+        height: 32px;
+        font-size: 13px;
+        padding: 3px;
+        border-radius: 5px;
+    }
+}
