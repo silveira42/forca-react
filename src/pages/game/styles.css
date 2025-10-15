@@ -1,1 +1,278 @@
 @import '../../App.css';
+
+.game-container {
+    min-height: 100vh;
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-background) 0%, var(--color-surface-secondary) 100%);
+}
+
+.game-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.game-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.game-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.game-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+.game-board-section {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.game-status {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.game-status.playing {
+    background-color: rgba(30, 58, 138, 0.1);
+    color: var(--color-primary);
+    border: 2px solid rgba(30, 58, 138, 0.2);
+}
+
+.game-status.won {
+    background-color: rgba(5, 150, 105, 0.1);
+    color: var(--color-success);
+    border: 2px solid rgba(5, 150, 105, 0.2);
+}
+
+.game-status.lost {
+    background-color: rgba(220, 38, 38, 0.1);
+    color: var(--color-error);
+    border: 2px solid rgba(220, 38, 38, 0.2);
+}
+
+.game-input-section {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.game-input-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.game-letter-input {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.game-letter-input .input {
+    max-width: 200px;
+    text-align: center;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+}
+
+.game-alphabet {
+    margin-top: var(--spacing-lg);
+}
+
+.game-alphabet-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.game-actions {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xl);
+}
+
+.game-actions .button {
+    min-width: 140px;
+}
+
+.game-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.game-stat {
+    background-color: var(--color-surface-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+.game-stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    display: block;
+}
+
+.game-stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.game-hint {
+    background-color: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-accent);
+    font-size: var(--font-size-sm);
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (min-width: 1024px) {
+    .game-main {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .game-wrapper {
+        gap: var(--spacing-lg);
+    }
+
+    .game-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+        padding: var(--spacing-lg);
+    }
+
+    .game-title {
+        font-size: var(--font-size-xl);
+    }
+
+    .game-controls {
+        justify-content: center;
+    }
+
+    .game-board-section {
+        padding: var(--spacing-xl);
+    }
+
+    .game-input-section {
+        padding: var(--spacing-lg);
+    }
+
+    .game-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 640px) {
+    .game-container {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .game-header {
+        padding: var(--spacing-md);
+    }
+
+    .game-title {
+        font-size: var(--font-size-lg);
+    }
+
+    .game-board-section {
+        padding: var(--spacing-lg);
+    }
+
+    .game-input-section {
+        padding: var(--spacing-md);
+    }
+
+    .game-actions {
+        flex-direction: column;
+    }
+
+    .game-actions .button {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .game-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .game-letter-input .input {
+        max-width: 150px;
+        font-size: var(--font-size-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .game-wrapper {
+        gap: var(--spacing-md);
+    }
+
+    .game-board-section {
+        padding: var(--spacing-md);
+    }
+
+    .game-stat {
+        padding: var(--spacing-sm);
+    }
+
+    .game-stat-value {
+        font-size: var(--font-size-xl);
+    }
+}

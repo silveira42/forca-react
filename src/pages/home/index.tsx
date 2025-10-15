@@ -5,6 +5,7 @@ import { GameStage, useGameContext } from '../../GameContext';
 import './styles.css';
 import { useAppContext } from '../../AppContext';
 import LanguageChooser from '../../components/languageChooser';
+import ThemeToggle from '../../components/themeToggle';
 
 export default function Home() {
 	const { game } = useGameContext();
@@ -18,19 +19,22 @@ export default function Home() {
 	};
 
 	return (
-		<div>
-			<h1>{dictionary.welcome}</h1>
-			{game.stage === GameStage.Start && (
-				<div>
-					<WordInput onChoose={word => chooseWord(word)} />
-					<LanguageChooser />
-				</div>
-			)}
-			{game.stage === GameStage.Playing && (
-				<div>
+		<div className="home-container">
+			<div className="home-header">
+				<h1>{dictionary.welcome}</h1>
+				<ThemeToggle />
+			</div>
+			<div className="home-content">
+				{game.stage === GameStage.Start && (
+					<>
+						<WordInput onChoose={word => chooseWord(word)} />
+						<LanguageChooser />
+					</>
+				)}
+				{game.stage === GameStage.Playing && (
 					<Game />
-				</div>
-			)}
+				)}
+			</div>
 		</div>
 	);
 }

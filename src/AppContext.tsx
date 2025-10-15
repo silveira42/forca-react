@@ -6,7 +6,15 @@ import React from 'react';
 import useLocalStorage from './util/useLocalStorage';
 
 const theme: Theme = {
-	getCurrent: () => localStorage.getItem('theme') as keyof Themes,
+	getCurrent: () => {
+		const saved = localStorage.getItem('theme') as keyof Themes;
+		if (saved) return saved;
+		// Auto-detect based on system preference
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			return 'dark';
+		}
+		return 'light';
+	},
 	toggleTheme: () => {},
 };
 
@@ -36,7 +44,7 @@ export const AppContextProvider = ({
 }) => {
 	const [currentTheme, setCurrentTheme] = useLocalStorage<keyof Themes>(
 		'theme',
-		theme.getCurrent()
+		theme.getCurrent() || 'light'
 	);
 	const [currentLanguage, setCurrentLanguage] = useLocalStorage<
 		keyof Languages
@@ -49,6 +57,25 @@ export const AppContextProvider = ({
 	theme.toggleTheme = () => {
 		setCurrentTheme(currentTheme === 'dark' ? 'light' : 'dark');
 	};
+
+	// Apply theme to document
+	React.useEffect(() => {
+		document.documentElement.setAttribute('data-theme', currentTheme);
+	}, [currentTheme]);
+
+	// Listen for system theme changes if no explicit theme is set
+	React.useEffect(() => {
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		const handleChange = () => {
+			// Only auto-update if user hasn't explicitly set a theme
+			if (!localStorage.getItem('theme')) {
+				setCurrentTheme(mediaQuery.matches ? 'dark' : 'light');
+			}
+		};
+
+		mediaQuery.addEventListener('change', handleChange);
+		return () => mediaQuery.removeEventListener('change', handleChange);
+	}, [setCurrentTheme]);
 
 	intl.getLanguage = () => currentLanguage;
 	intl.getCurrency = () => currentCurrency;

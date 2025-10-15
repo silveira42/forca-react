@@ -2,6 +2,7 @@ import React from 'react';
 import { useGameContext } from '../../GameContext';
 import Hangman from '../../components/hangman';
 import LetterInput from '../../components/letterInput';
+import ThemeToggle from '../../components/themeToggle';
 import './styles.css';
 import { useAppContext } from '../../AppContext';
 
@@ -47,19 +48,21 @@ export default function Game() {
 	};
 
 	return (
-		<div>
-			<div>
-				<LetterInput onChoose={checkLetter} />
-			</div>
-			<div>
-				<h2>{displayedWord}</h2>
-			</div>
-			<div>
-				<Hangman wrongGuesses={wrongLetters.length} />
-			</div>
-			<div>
-				<h2>{dictionary.game.wrongLetters}:</h2>
-				<h3>{wrongLetters.join(', ')}</h3>
+		<div className="game-wrapper">
+			<div className="game-content">
+				<div>
+					<LetterInput onChoose={checkLetter} />
+				</div>
+				<div>
+					<h2>{displayedWord}</h2>
+				</div>
+				<div>
+					<Hangman wrongGuesses={wrongLetters.length} />
+				</div>
+				<div>
+					<h2>{dictionary.game.wrongLetters}:</h2>
+					<h3>{wrongLetters.join(', ')}</h3>
+				</div>
 			</div>
 		</div>
 	);

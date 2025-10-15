@@ -1,21 +1,309 @@
+/* Button Styles */
 .button {
-	background-color: #414141;
-	border: solid white 0.5px;
-	color: rgb(255, 255, 255);
-	padding: 8px 15px;
-	border-radius: 10px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer;
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--color-text-inverse);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+    min-height: 44px;
+    /* Better touch target */
 }
 
+.button:hover {
+    background-color: var(--color-primary-light);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: var(--shadow-md), 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.button:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-md), 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.button:disabled {
+    background-color: var(--color-secondary-light);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Button Variants */
+.button.secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-inverse);
+}
+
+.button.secondary:hover {
+    background-color: var(--color-secondary-dark);
+}
+
+.button.accent {
+    background-color: var(--color-accent);
+    color: var(--color-text-inverse);
+}
+
+.button.accent:hover {
+    background-color: var(--color-accent-light);
+}
+
+.button.success {
+    background-color: var(--color-success);
+    color: var(--color-text-inverse);
+}
+
+.button.success:hover {
+    background-color: var(--color-success-light);
+}
+
+.button.warning {
+    background-color: var(--color-warning);
+    color: var(--color-text-inverse);
+}
+
+.button.warning:hover {
+    background-color: var(--color-warning-light);
+}
+
+.button.error {
+    background-color: var(--color-error);
+    color: var(--color-text-inverse);
+}
+
+.button.error:hover {
+    background-color: var(--color-error-light);
+}
+
+.button.outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.button.outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
+/* Input Styles */
 .input {
-	background-color: #ffffff;
-	border: solid #414141 0.5px;
-	color: rgb(0, 0, 0);
-	padding: 8px 23px;
-	border-radius: 10px;
-	text-decoration: none;
-	display: inline-block;
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-secondary-light);
+    color: var(--color-text-primary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    display: inline-block;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    transition: all var(--transition-fast);
+    min-height: 44px;
+    /* Better touch target */
+    width: 100%;
+    box-shadow: var(--shadow-sm);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md), 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input:hover {
+    border-color: var(--color-secondary);
+}
+
+.input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.input:disabled {
+    background-color: var(--color-surface-secondary);
+    border-color: var(--color-secondary-light);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+/* Select Styles */
+.select {
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-secondary-light);
+    color: var(--color-text-primary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    transition: all var(--transition-fast);
+    min-height: 44px;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+.select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md), 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.select:hover {
+    border-color: var(--color-secondary);
+}
+
+/* Card Component */
+.card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    margin-bottom: var(--spacing-lg);
+}
+
+.card.elevated {
+    box-shadow: var(--shadow-lg);
+}
+
+.card.compact {
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-xl);
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+}
+
+/* Game-specific styles */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.game-board {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    text-align: center;
+}
+
+.game-actions {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xl);
+}
+
+.game-actions .button {
+    min-width: 140px;
+}
+
+/* Button Group Styles */
+.button-group {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: var(--spacing-lg) 0;
+}
+
+.button-group.tight {
+    gap: var(--spacing-sm);
+}
+
+.button-group.loose {
+    gap: var(--spacing-xl);
+}
+
+.button-group .button {
+    min-width: 120px;
+}
+
+/* Animation Classes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.bounce {
+    animation: bounce 0.6s ease-in-out;
 }
