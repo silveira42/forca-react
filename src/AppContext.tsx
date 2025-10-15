@@ -1,12 +1,16 @@
-import enDictionary from './context/dictionary/en';
-import pt_brDictionary from './context/dictionary/pt_br';
-import { Currencies, Intl, Languages } from './context/model/Intl';
-import { Theme, Themes } from './context/model/Theme';
 import React from 'react';
+import { Theme, Themes } from './context/model/Theme';
+import { Currencies, Intl, Languages } from './context/model/Intl';
+import pt_brDictionary from './context/dictionary/pt_br';
 import useLocalStorage from './util/useLocalStorage';
+import enDictionary from './context/dictionary/en';
+import { getPreferredTheme, getPreferredLanguage, getPreferredCurrency } from './util/getBrowserPreferences';
 
 const theme: Theme = {
-	getCurrent: () => localStorage.getItem('theme') as keyof Themes,
+	getCurrent: () => {
+		const storedTheme = localStorage.getItem('theme');
+		return storedTheme ? (storedTheme as keyof Themes) : getPreferredTheme();
+	},
 	toggleTheme: () => {},
 };
 
@@ -17,8 +21,14 @@ const languages: Languages = {
 
 const intl: Intl = {
 	listLanguages: () => languages,
-	getLanguage: () => localStorage.getItem('language') as keyof Languages,
-	getCurrency: () => localStorage.getItem('currency') as keyof Currencies,
+	getLanguage: () => {
+		const storedLanguage = localStorage.getItem('language');
+		return storedLanguage ? (storedLanguage as keyof Languages) : getPreferredLanguage();
+	},
+	getCurrency: () => {
+		const storedCurrency = localStorage.getItem('currency');
+		return storedCurrency ? (storedCurrency as keyof Currencies) : getPreferredCurrency();
+	},
 	getDictionary: () => pt_brDictionary,
 	changeLanguage: (language: keyof Languages) => {},
 	changeCurrency: (currency: keyof Currencies) => {},
@@ -36,14 +46,14 @@ export const AppContextProvider = ({
 }) => {
 	const [currentTheme, setCurrentTheme] = useLocalStorage<keyof Themes>(
 		'theme',
-		theme.getCurrent()
+		getPreferredTheme()
 	);
 	const [currentLanguage, setCurrentLanguage] = useLocalStorage<
 		keyof Languages
-	>('language', intl.getLanguage());
+	>('language', getPreferredLanguage());
 	const [currentCurrency, setCurrentCurrency] = useLocalStorage<
 		keyof Currencies
-	>('currency', intl.getCurrency());
+	>('currency', getPreferredCurrency());
 
 	theme.getCurrent = () => currentTheme;
 	theme.toggleTheme = () => {
@@ -67,7 +77,7 @@ export const AppContextProvider = ({
 			intl.getDictionary = () => pt_brDictionary;
 			break;
 		default:
-			intl.getDictionary = () => enDictionary;
+			intl.getDictionary = () => pt_brDictionary;
 	}
 
 	return (
