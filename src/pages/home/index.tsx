@@ -84,8 +84,8 @@ export default function Home() {
 				let filteredWords;
 				switch (difficulty) {
 					case 'easy':
-						// Very common words (high ICF scores)
-						filteredWords = wordData.filter(item => item.score >= 10.0);
+						// Very common words (low ICF scores)
+						filteredWords = wordData.filter(item => item.score < 8.0);
 						break;
 					case 'medium':
 						// Moderately common words
@@ -94,8 +94,8 @@ export default function Home() {
 						);
 						break;
 					case 'hard':
-						// Uncommon/rare words (low ICF scores)
-						filteredWords = wordData.filter(item => item.score < 8.0);
+						// Uncommon/rare words (high ICF scores)
+						filteredWords = wordData.filter(item => item.score >= 10.0);
 						break;
 					default:
 						filteredWords = wordData;

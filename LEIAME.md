@@ -7,7 +7,7 @@ Um jogo da forca moderno e multilíngue construído com React e TypeScript. Jogu
 
 **[🎮 Jogue aqui!](https://forca.thesilver.com.br)**
 
-![Version](https://img.shields.io/badge/version-2.0.1-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.2-blue.svg)
 ![React](https://img.shields.io/badge/React-18.3.1-61dafb.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-4.4.2-3178c6.svg)
 
